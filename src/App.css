@@ -1,0 +1,16 @@
+#root {
+    width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    color: black;
+}
+
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
