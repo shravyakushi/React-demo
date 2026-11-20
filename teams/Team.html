@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Team Players</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background-color: #f4f4f4;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #222;
+        }
+
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #eeeeee;
+        }
+
+        button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="teamName">IPL Team</h1>
+
+    <h2>Players List</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sl.No</th>
+                <th>Player Name</th>
+            </tr>
+        </thead>
+
+        <tbody id="players"></tbody>
+    </table>
+
+    <button onclick="history.back()">Go Back</button>
+
+    <script>
+
+        const teams = {
+            rcb: {
+                name: "Royal Challengers Bengaluru",
+                players: ["Virat Kohli", "Rajat Patidar", "Phil Salt", "Josh Hazlewood", "Bhuvneshwar Kumar"]
+            },
+
+            csk: {
+                name: "Chennai Super Kings",
+                players: ["Ruturaj Gaikwad", "MS Dhoni", "Shivam Dube", "Ravindra Jadeja", "Matheesha Pathirana"]
+            },
+
+            mi: {
+                name: "Mumbai Indians",
+                players: ["Rohit Sharma", "Hardik Pandya", "Suryakumar Yadav", "Jasprit Bumrah", "Tilak Varma"]
+            },
+
+            dc: {
+                name: "Delhi Capitals",
+                players: ["KL Rahul", "Axar Patel", "Kuldeep Yadav", "Mitchell Starc", "Tristan Stubbs"]
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const team = params.get("team");
+
+        if (teams[team]) {
+
+            document.getElementById("teamName").innerText = teams[team].name;
+
+            const table = document.getElementById("players");
+
+            teams[team].players.forEach(function(player, index) {
+
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${player}</td>
+                `;
+
+                table.appendChild(row);
+            });
+
+        } else {
+            document.getElementById("teamName").innerText = "Team Not Found";
+        }
+
+    </script>
+
+</body>
+</html>
